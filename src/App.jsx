@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Route, Router, Routes, useLocation, useNavigate } from "react-router-dom";
 import Chat from "./pages/Chat/Chat";
-import { HashRouter } from "react-router-dom/dist";
 import Login from "./pages/Login/Login";
 import ProfileUpdate from "./pages/ProfileUpdate/ProfileUpdate";
 import { ToastContainer, toast } from 'react-toastify';
@@ -9,7 +8,6 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./config/firebase";
 import NotFound from "./notFound";
 import { appContext } from "./context/AppContext";
-import { HashRouter } from "react-router-dom/dist";
 function App() {
 
     const navigate = useNavigate()
@@ -34,14 +32,12 @@ function App() {
     return(
         <>
         <ToastContainer/>
-        <HashRouter>
-        <Router>
+        <Routes>
             <Route path="/" element={<Login/>}/>
             <Route path="/chat" element={<Chat/>}/>
             <Route path="/profile" element={<ProfileUpdate/>}/>
            <Route path="/*" element={<NotFound/>}/>
-        </Router>
-        </HashRouter>
+        </Routes>
         </>
     )
 }
